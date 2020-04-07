@@ -179,15 +179,19 @@ To talk to your chatbot, click on the **microphone** input tab and ask a questio
 
 The following Node-RED flow is included in this tutorial.
 
-![Node-RED COVID Data Dashboard](./images/Node-RED-COVID-Dashboard-flow.png)
+![Node-RED COVID Data Dashboard](./images/Node-RED-COVID-Dashboard-flow-v1.png)
 
 The `http request` node is using the [public Covid-19 API](https://api.covid19api.com/summary) to retrieve the daily information for all countries with infections. 
 
 Here's the sample JSON object from the summary API:
 
 ```json
-{"Country":"US","Slug":"us","NewConfirmed":18058,"TotalConfirmed":83836,"NewDeaths":267,"TotalDeaths":1209,"NewRecovered":320,"TotalRecovered":681},
+{"Global":{"NewConfirmed":72611,"TotalConfirmed":1341327,"NewDeaths":5191,"TotalDeaths":74520,"NewRecovered":16507,"TotalRecovered":275564}
 ```
+Each `change` node is used to extract the Total Confirmed Cases, Total Fatalities, Total Recovered
+
+![Node-RED-COVID-Dashboard-change-node](./images/Node-RED-COVID-Dashboard-change-node.png)
+
 
 Each `function` node then aggregates the Total Confirmed Cases, Total Fatalities, Total Recovered, and Total Countries and sends the results to the corresponding `gauge` node.
 
