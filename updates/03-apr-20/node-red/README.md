@@ -193,7 +193,7 @@ Each `change` node is used to extract the Total Confirmed Cases, Total Fatalitie
 ![Node-RED-COVID-Dashboard-change-node](./images/Node-RED-COVID-Dashboard-change-node.png)
 
 
-The `function` node for Total Countries, counts the number of countries with cases and sends the results to the corresponding `gauge` node.
+The `function` node for Total Countries will count the number of countries with cases and sends the results to the corresponding `gauge` node.
 
 This is the code in the `function` node:
 
