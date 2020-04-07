@@ -188,23 +188,23 @@ Here's the sample JSON object from the summary API:
 ```json
 {"Global":{"NewConfirmed":72611,"TotalConfirmed":1341327,"NewDeaths":5191,"TotalDeaths":74520,"NewRecovered":16507,"TotalRecovered":275564}
 ```
-Each `change` node is used to extract the Total Confirmed Cases, Total Fatalities, Total Recovered
+Each `change` node is used to extract the Total Confirmed Cases, Total Fatalities, Total Recovered information and sends the results to the corresponding `gauge` node.
 
 ![Node-RED-COVID-Dashboard-change-node](./images/Node-RED-COVID-Dashboard-change-node.png)
 
 
-Each `function` node then aggregates the Total Confirmed Cases, Total Fatalities, Total Recovered, and Total Countries and sends the results to the corresponding `gauge` node.
+The `function` node for then Total Countries, counts the number of countries with cases and sends the results to the corresponding `gauge` node.
 
 This is the code in the `function` node:
 
 ```javascript
-let totalConfirmedCase = 0;
+let totalCountries = 0;
 
 msg.payload.Countries.map(function(line){
-    totalConfirmedCase += line.TotalConfirmed;
+    totalCountries += 1;
 });
 
-msg.payload = totalConfirmedCase;
+msg.payload = totalCountries;
 
 return msg;
 ```
