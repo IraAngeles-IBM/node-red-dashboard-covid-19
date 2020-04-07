@@ -175,32 +175,36 @@ To talk to your chatbot, click on the **microphone** input tab and ask a questio
 - Every hour the Node-RED flow will call the [covid19api](https://api.covid19api.com/summary) summary API and collect dynamic COVID-19 infection statistics
 - The country data is aggregated and then the gauges are updated
 
-### Learn more about the Dashboard code
+### Learn more about the Cases Summary Dashboard code
 
 The following Node-RED flow is included in this tutorial.
 
-![Node-RED COVID Data Dashboard](./images/Node-RED-COVID-Dashboard-flow.png)
+![Node-RED COVID Data Dashboard](./images/Node-RED-COVID-Dashboard-flow-v1.png)
 
 The `http request` node is using the [public Covid-19 API](https://api.covid19api.com/summary) to retrieve the daily information for all countries with infections. 
 
 Here's the sample JSON object from the summary API:
 
 ```json
-{"Country":"US","Slug":"us","NewConfirmed":18058,"TotalConfirmed":83836,"NewDeaths":267,"TotalDeaths":1209,"NewRecovered":320,"TotalRecovered":681},
+{"Global":{"NewConfirmed":72611,"TotalConfirmed":1341327,"NewDeaths":5191,"TotalDeaths":74520,"NewRecovered":16507,"TotalRecovered":275564}
 ```
+Each `change` node is used to extract the Total Confirmed Cases, Total Fatalities, Total Recovered information and sends the results to the corresponding `gauge` node.
 
-Each `function` node then aggregates the Total Confirmed Cases, Total Fatalities, Total Recovered, and Total Countries and sends the results to the corresponding `gauge` node.
+![Node-RED-COVID-Dashboard-change-node](./images/Node-RED-COVID-Dashboard-change-node.png)
+
+
+The `function` node for then Total Countries, counts the number of countries with cases and sends the results to the corresponding `gauge` node.
 
 This is the code in the `function` node:
 
 ```javascript
-let totalConfirmedCase = 0;
+let totalCountries = 0;
 
 msg.payload.Countries.map(function(line){
-    totalConfirmedCase += line.TotalConfirmed;
+    totalCountries += 1;
 });
 
-msg.payload = totalConfirmedCase;
+msg.payload = totalCountries;
 
 return msg;
 ```
