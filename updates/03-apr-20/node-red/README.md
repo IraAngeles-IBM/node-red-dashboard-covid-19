@@ -177,7 +177,7 @@ To talk to your chatbot, click on the **microphone** input tab and ask a questio
 - Press `CLEAR CHAT` button to clear `Chat History`
 - The `Chat History` will show the `Speech-to-Text` converted audio and the chatbot reply
 - Every hour the Node-RED flow will call the [covid19api](https://api.covid19api.com/summary) summary API and collect dynamic COVID-19 infection statistics
-- The country data is aggregated and then the gauges are updated
+- The Global data is extracted from the API results and then the gauges are updated
 
 ### Learn more about the Case Summary Dashboard code
 
