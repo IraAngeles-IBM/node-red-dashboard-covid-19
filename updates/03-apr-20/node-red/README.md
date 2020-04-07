@@ -170,8 +170,12 @@ To talk to your chatbot, click on the **microphone** input tab and ask a questio
 
 **Bonus**: This flow includes a Node-RED Dashboard with several gauges to display COVID-19 statistics.
 
-![Node-RED COVID Data Dashboard](./images/Node-RED-COVID-Dashboard.png)
+![Node-RED COVID Data Dashboard](./images/Node-RED-COVIDChatBot-Dashboard.png)
 
+
+- Press the `microphone` button to start the recording.  It will automatically stop after 3 seconds.
+- Press `CLEAR CHAT` button to clear `Chat History`
+- The `Chat History` will show the `Speech-to-Text` converted audio and the chatbot reply
 - Every hour the Node-RED flow will call the [covid19api](https://api.covid19api.com/summary) summary API and collect dynamic COVID-19 infection statistics
 - The country data is aggregated and then the gauges are updated
 
