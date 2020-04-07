@@ -175,7 +175,7 @@ To talk to your chatbot, click on the **microphone** input tab and ask a questio
 - Every hour the Node-RED flow will call the [covid19api](https://api.covid19api.com/summary) summary API and collect dynamic COVID-19 infection statistics
 - The country data is aggregated and then the gauges are updated
 
-### Learn more about the Dashboard code
+### Learn more about the Cases Summary Dashboard code
 
 The following Node-RED flow is included in this tutorial.
 
